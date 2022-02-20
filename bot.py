@@ -4,6 +4,7 @@ import requests
 import os
 import config
 import messages
+import generator
 
 
 class Bot:
@@ -33,19 +34,16 @@ class Bot:
             if msg.text == '/info':
                 commands('/info')
             else:
-                try:
-                    if msg.document.file_name.endswith('.zip'): 
-                        file_info = self.bot.get_file(msg.document.file_id)
-                        file_user = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(config.token, file_info.file_path))
-                        filename = f'temp/{msg.document.file_id}.zip'
-                        with open(filename, 'wb') as file:
-                            file.write(file_user.content)
-                        self.bot.send_message(msg.chat.id, 'Бот принял файла на обработку, ожидайте...')
-                        self.analyse_zip(msg, filename[5:])
-                    else:
-                        self.bot.send_message(msg.chat.id, 'Что-то не так с отправкой файла. Проверьте все и попробуйте ещё раз')
-                except Exception as e:
-                    print(e)
+                if msg.document.file_name.endswith('.zip'): 
+                    file_info = self.bot.get_file(msg.document.file_id)
+                    file_user = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(config.token, file_info.file_path))
+                    filename = f'temp/{msg.document.file_id}.zip'
+                    with open(filename, 'wb') as file:
+                        file.write(file_user.content)
+                    self.bot.send_message(msg.chat.id, 'Бот принял файла на обработку, ожидайте...')
+                    self.analyse_zip(msg, filename[5:])
+                else:
+                    self.bot.send_message(msg.chat.id, 'Что-то не так с отправкой файла. Проверьте все и попробуйте ещё раз')
         
         self.bot.polling()
     
@@ -58,6 +56,7 @@ class Bot:
         if 'template.json' in result and len(result) > 1:
             self.bot.send_message(msg.chat.id, 'Архив проверен. template.json в архиве есть, посторонние файлы тоже имеются.\nПриступаем к генерации')
             os.remove(f'temp/{zip}')
+            generator.main(f'{first_dir}/{folder_inside[0]}')
 
 if __name__ == '__main__':
     bot = Bot()

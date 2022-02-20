@@ -1,12 +1,13 @@
-def main():
+def main(folder):
     from PIL import Image
     import json
     import random
 
     number_of_all = 10000
 
-    all_info = json.load(open("template.json", "r"))
+    all_info = json.load(open(f"{folder}/template.json", "r"))
     number_of_all, all_info = all_info["num_of_all"], all_info["generation"]
+    number_of_all = 50000
     new_info = [ [] for _ in range(len(all_info.keys()))]
     counter = 0
     for key, layer in all_info.items():
@@ -40,4 +41,24 @@ def main():
         output = ':'.join(output)
         combinations.append(output)
                 
-    print(combinations)
+    # combinations = ":".join(combinations)
+    # print(combinations.count("b1") / 500 )
+    # print(combinations.count("b2") / 500)
+    # print(combinations.count("b3") / 500)
+    # print(combinations.count("b4") / 500)
+    # print(combinations.count("b5") / 500)
+    # print(combinations.count("b6") / 500)
+    # print(combinations.count("b7") / 500)
+    # print(combinations.count("b8") / 500)
+    # print(combinations.count("f1") / 500)
+    # print(combinations.count("f2") / 500)
+    # print(combinations.count("l1") / 500)
+    # print(combinations.count("l2") / 500)
+    # print(combinations.count("l3") / 500)
+    # print(combinations.count("l4") / 500)
+    # print(combinations.count("l5") / 500)
+    # print(combinations.count("l6") / 500)
+    # print(combinations.count("l7") / 500)
+    # print(combinations.count("l8") / 500)
+    # print(combinations.count("l9") / 500)
+    # print(combinations.count("l10") / 500)
