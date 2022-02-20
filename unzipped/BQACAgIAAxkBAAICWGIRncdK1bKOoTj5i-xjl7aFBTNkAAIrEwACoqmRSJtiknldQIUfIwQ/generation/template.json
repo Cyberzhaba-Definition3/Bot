@@ -1,0 +1,34 @@
+{
+    "num_of_all":1000,
+    "generation":
+    {   
+        "backgrounds":
+        [
+            {"name": "b1.png", "rarity": 0.15},
+            {"name": "b2.png", "rarity": 0.15},
+            {"name": "b3.png", "rarity": 0.15},
+            {"name": "b4.png", "rarity": 0.15},
+            {"name": "b5.png", "rarity": 0.15},
+            {"name": "b6.png", "rarity": 0.15},
+            {"name": "b8.png", "rarity": 0.05}
+        ],
+        "lighters":
+        [
+            {"name": "l1.png", "rarity": 0.11},
+            {"name": "l2.png", "rarity": 0.11},
+            {"name": "l3.png", "rarity": 0.11},
+            {"name": "l4.png", "rarity": 0.11},
+            {"name": "l5.png", "rarity": 0.11},
+            {"name": "l6.png", "rarity": 0.11},
+            {"name": "l7.png", "rarity": 0.11},
+            {"name": "l8.png", "rarity": 0.10},
+            {"name": "l9.png", "rarity": 0.10},
+            {"name": "l10.png", "rarity": 0.03}
+        ],
+        "flames":
+        [
+            {"name": "f1.png", "rarity": 0.7},
+            {"name": "f2.png", "rarity": 0.3}
+        ]
+    }
+}

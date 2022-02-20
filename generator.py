@@ -1,7 +1,8 @@
-def main(folder):
+def main(folder, filename):
     from PIL import Image
     import json
     import random
+    import os
 
     number_of_all = 10000
 
@@ -62,3 +63,49 @@ def main(folder):
     # print(combinations.count("l8") / 500)
     # print(combinations.count("l9") / 500)
     # print(combinations.count("l10") / 500)
+    
+    def migrate(back, front):
+        back = back.copy()
+        front = front.copy()
+        
+        back.paste(front, (0,0), front)
+        return back.copy()
+
+    
+    def clear_all(l):
+        try:
+            os.mkdir(f'export/{filename}')
+        except Exception as e:
+            print(e)
+        for photo in l:
+            try:
+                photo.save(f'export/{filename}/{random.randint(0,10000000)}.png')
+            except:
+                photo.save(f'export/{filename}/{random.randint(0,10000000)}.png')
+        return []
+
+    all_done = []
+    counter = 0 #just to see progress
+
+    for item in combinations:
+        print(f'progress ... {counter/60}%')
+        
+        if counter % 10 == 0:
+            all_done = clear_all(all_done)
+            print('all_done saved and cleared')
+            
+        layers = item.split(':')
+        for ind in range(len(layers)-1):
+            if ind == 0:
+                lay_1 = Image.open(f'{folder}/{layers[ind]}')
+                lay_2 = Image.open(f'{folder}/{layers[ind+1]}')
+                result = migrate(lay_1,lay_2)
+            else:
+                lay_1 = result.copy()
+                lay_2 = Image.open(f'{folder}/{layers[ind+1]}')
+                result = migrate(lay_1,lay_2)
+                
+        all_done.append(result)
+        counter += 1
+
+    print(len(all_done))

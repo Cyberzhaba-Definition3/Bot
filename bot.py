@@ -43,7 +43,7 @@ class Bot:
                     self.bot.send_message(msg.chat.id, 'Бот принял файла на обработку, ожидайте...')
                     self.analyse_zip(msg, filename[5:])
                 else:
-                    self.bot.send_message(msg.chat.id, 'Что-то не так с отправкой файла. Проверьте все и попробуйте ещё раз')
+                    self.bot.send_message(msg.chat.id, 'Что-то не так с отправкой файла. Проверьте все и попробуйте ещё раз', filename)
         
         self.bot.polling()
     
@@ -56,7 +56,7 @@ class Bot:
         if 'template.json' in result and len(result) > 1:
             self.bot.send_message(msg.chat.id, 'Архив проверен. template.json в архиве есть, посторонние файлы тоже имеются.\nПриступаем к генерации')
             os.remove(f'temp/{zip}')
-            generator.main(f'{first_dir}/{folder_inside[0]}')
+            generator.main(f'{first_dir}/{folder_inside[0]}', zip[:-4])
 
 if __name__ == '__main__':
     bot = Bot()
