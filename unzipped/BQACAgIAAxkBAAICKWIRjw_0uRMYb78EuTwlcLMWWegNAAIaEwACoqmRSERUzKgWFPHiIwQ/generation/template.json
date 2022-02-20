@@ -1,0 +1,31 @@
+{   
+    "backgrounds":
+    [
+        {"name": "b1", "rarity": 0.15},
+        {"name": "b2", "rarity": 0.15},
+        {"name": "b3", "rarity": 0.15},
+        {"name": "b4", "rarity": 0.15},
+        {"name": "b5", "rarity": 0.15},
+        {"name": "b6", "rarity": 0.15},
+        {"name": "b7", "rarity": 0.15},
+        {"name": "b8", "rarity": 0.05}
+    ],
+    "lighters":
+    [
+        {"name": "l1", "rarity": 0.11},
+        {"name": "l2", "rarity": 0.11},
+        {"name": "l3", "rarity": 0.11},
+        {"name": "l4", "rarity": 0.11},
+        {"name": "l5", "rarity": 0.11},
+        {"name": "l6", "rarity": 0.11},
+        {"name": "l7", "rarity": 0.11},
+        {"name": "l8", "rarity": 0.10},
+        {"name": "l9", "rarity": 0.10},
+        {"name": "l10", "rarity": 0.03}
+    ],
+    "flames":
+    [
+        {"name": "f1", "rarity": 0.7},
+        {"name": "f2", "rarity": 0.3}
+    ]
+}
