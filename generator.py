@@ -6,6 +6,7 @@ def main():
     number_of_all = 10000
 
     all_info = json.load(open("template.json", "r"))
+    number_of_all, all_info = all_info["num_of_all"], all_info["generation"]
     new_info = [ [] for _ in range(len(all_info.keys()))]
     counter = 0
     for key, layer in all_info.items():
